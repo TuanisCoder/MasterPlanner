@@ -3,6 +3,10 @@
 > Read this file first in any new session (Claude Code, Cline, or chat) before
 > doing anything else in this repo. It's the continuity mechanism across tools
 > and across time — nothing here is assumed to be remembered elsewhere.
+>
+> Also see `ENVIRONMENT.md` for durable setup facts (ports, model IDs,
+> versions, config values) — look things up there instead of rediscovering
+> them each session.
 
 ## 1. What this is
 
