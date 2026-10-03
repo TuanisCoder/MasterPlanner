@@ -20,7 +20,21 @@ engine itself may be licensed to or wrapped by SEER as a separate dependent
 package — never merged directly into SEER's repo. See `/areas/blue-market.md`
 and `/areas/seer.md` style framing if more business context is needed.
 
-## 2. Origin
+## 2. Storage policy — everything lives in the repo
+
+**All documentation, specs, architectural decisions, and artifacts
+produced while working on this project are written into this repo.**
+Not into the claude.ai Project's own document store, not left as
+chat-only output, not generated as standalone files handed back for
+separate upload. If it's worth keeping, it gets written here, directly,
+as part of doing the work — following Mario's "touch files once"
+principle (see `docs/ARCHITECT_NOTES.md`).
+
+This repo — not any chat history, not any other persistence mechanism —
+is the single source of truth. A new session (any tool, any surface)
+should be able to reconstruct full context from what's committed here.
+
+## 3. Origin
 
 This repo (`MasterPlanner`) started as a clean break from an earlier,
 general-purpose sandbox repo (`planning-engine-lab`) — structured
@@ -31,7 +45,7 @@ see the 2026-10-03 session log entry below for specifics. The "clean
 start" was about structure and intent, not a refusal to reuse anything
 genuinely useful.
 
-## 3. Tooling split (as of initial setup)
+## 4. Tooling split (as of initial setup)
 
 - **Claude Code** — authenticated against the Pro subscription (not API
   billing). Used for structurally tricky work: the sizing math, the circular
@@ -48,7 +62,7 @@ Routing between these is manual — there's no harness deciding automatically.
 The working split: Claude (Code or Cline) for anything with non-obvious
 logic or financial correctness at stake; local model for everything else.
 
-## 4. Repo structure — intentionally adaptable
+## 5. Repo structure — intentionally adaptable
 
 The `master_planning/ bond_sizing/ ratio_analytics/ shared/` split reflects
 the three-lens architecture (see README). This is expected to evolve as the
@@ -66,7 +80,20 @@ Two additional folders, added 2026-10-03:
   part of this product's own code (e.g. `kijabe-ui-precedent/`, a prior
   React prototype being adapted from, not depended on).
 
-## 5. Recap protocol
+## 6. Naming conventions
+
+- **Python code/packages:** `snake_case` (`master_planning`, `bond_sizing`)
+  — not a style choice, Python doesn't allow dashes in import names.
+- **Load-bearing docs** (standing reference/protocol, meant to be read as
+  authoritative): `SCREAMING_SNAKE_CASE.md` — e.g. `PROJECT_CONTEXT.md`,
+  `ENVIRONMENT.md`, `BOND_SIZING_SPEC.md`, `ARCHITECT_NOTES.md`. The
+  all-caps is a visual signal that this file is load-bearing, not a
+  passing note.
+- **Everything lighter-weight or chronological:** `kebab-case` — e.g.
+  `docs/ideas-inbox.md`, `reference/kijabe-ui-precedent/`,
+  `recaps/YYYY-MM-DD-short-topic.md`.
+
+## 7. Recap protocol
 
 At the end of each working session, write a recap file to `recaps/` capturing:
 
@@ -77,7 +104,7 @@ At the end of each working session, write a recap file to `recaps/` capturing:
 
 Naming: `recaps/YYYY-MM-DD-short-topic.md`
 
-## 6. Session log
+## 8. Session log
 
 _(Newest first.)_
 
@@ -113,7 +140,7 @@ _(Newest first.)_
   general multi-project sandbox (email pipeline, PKM/Obsidian work, etc.) —
   leaning yes, kept separate from this repo either way.
 
-## 7. Glossary / shorthand
+## 9. Glossary / shorthand
 
 - **CCRC / Life Plan Community** — Continuing Care Retirement Community
 - **IL / AL / MC / SNF** — Independent Living / Assisted Living / Memory
