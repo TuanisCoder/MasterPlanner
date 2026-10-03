@@ -41,9 +41,16 @@ general-purpose sandbox repo (`planning-engine-lab`) — structured
 deliberately from day one as a standalone product rather than an
 experiment. On 2026-10-03, after a closer review, real material *was*
 found worth carrying over from `planning-engine-lab` and was migrated in:
-see the 2026-10-03 session log entry below for specifics. The "clean
+see the 2026-10-03 session log entries below for specifics. The "clean
 start" was about structure and intent, not a refusal to reuse anything
 genuinely useful.
+
+Business/IP framing (as of 2026-10-03): this module is practically in use
+by Blue Ocean Advisors ahead of SEER's launch, not purely built-for-later.
+Whether it (and similar tools) ends up owned by a separate holding entity
+that licenses to each operating company, or stays directly owned by one of
+them, is undecided. See the Ownership section of `README.md` for the
+current wording.
 
 ## 4. Tooling split (as of initial setup)
 
@@ -108,6 +115,27 @@ Naming: `recaps/YYYY-MM-DD-short-topic.md`
 
 _(Newest first.)_
 
+- **2026-10-03 (2)** — Reviewed SEER's design material to extract UI
+  principles for MasterPlanner's eventual client interface. Located the
+  relevant source in a separate repo, `seer-fpa-context`
+  (`archive/mario-intake-2026-09-07/source-documents/SEER_Design_Science_v1.docx`)
+  — SEER's own behavioral-design doctrine (the "Oura-like tiles" Mario
+  referenced; the source document's own term is "tile," not "card").
+  Triaged which of its ten behavioral-design principles apply to a
+  single-operator tool today vs. belong to SEER's multi-user governance
+  context later. Captured in new `docs/specs/UI_DESIGN_PRINCIPLES.md`:
+  the reusable tile anatomy (Signal / Anchor / Implication / CTA), a
+  red/amber/blue/green urgency classification that maps directly onto
+  covenant-threshold states already planned for `ratio_analytics/`, and
+  which principles (temporal discounting, loss framing, peer anchoring,
+  scenario simulation, narrative coherence, progress visibility) are
+  worth adopting now vs. deferred (identity motivation, gamification,
+  live input-time nudges — the latter waits for the React input
+  experience to exist). Also updated the Ownership framing in `README.md`
+  and §3 above to reflect that this module is in practical use by Blue
+  Ocean Advisors now, with the separate-holding-LLC licensing question
+  still open.
+
 - **2026-10-03** — Reviewed `planning-engine-lab` more carefully and
   migrated real material over (contradicts the 2026-09-30 "nothing of
   value" assessment below — there was substantially more than first
@@ -164,3 +192,7 @@ _(Newest first.)_
 - **Class 2 Sizing** — Wraparound / refunding against existing debt
 - **Philanthropy** — Real and variable (faith-based orgs: $0–$10M+);
   reduces par amount
+- **Tile** — SEER's term (not "card") for a contextual output element
+  that states a signal, a comparison anchor, a loss-framed implication,
+  and a single call-to-action — see
+  `docs/specs/UI_DESIGN_PRINCIPLES.md`

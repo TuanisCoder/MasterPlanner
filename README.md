@@ -64,6 +64,13 @@ pip install -e ".[dev]"
 
 ## Ownership
 
-Built for Blue Ocean Advisors (Mario McKenzie). May later be licensed to or
-integrated with SEER as a separate, dependent package — not merged into
-SEER's own repo.
+Built for Blue Ocean Advisors (Mario McKenzie). Already in practical use
+there ahead of SEER's launch — not purely speculative future integration.
+When SEER launches, this module is expected to become part of it as well,
+either folded in conceptually or licensed to it as a separate package.
+
+Mario has not yet decided whether this (and similar tools) will end up
+owned by a separate holding entity that licenses to each operating company
+— Blue Ocean Advisors and SEER both — for a nominal fee, or stay directly
+owned by one of them. Until that's resolved, treat this as Mario's personal
+intellectual capital, currently exercised through Blue Ocean Advisors.
