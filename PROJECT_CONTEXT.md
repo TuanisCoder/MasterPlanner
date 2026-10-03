@@ -23,9 +23,13 @@ and `/areas/seer.md` style framing if more business context is needed.
 ## 2. Origin
 
 This repo (`MasterPlanner`) started as a clean break from an earlier,
-general-purpose sandbox repo (`planning-engine-lab`). Nothing of value was
-carried over — this is a fresh start, structured deliberately from day one
-as a standalone product rather than an experiment.
+general-purpose sandbox repo (`planning-engine-lab`) — structured
+deliberately from day one as a standalone product rather than an
+experiment. On 2026-10-03, after a closer review, real material *was*
+found worth carrying over from `planning-engine-lab` and was migrated in:
+see the 2026-10-03 session log entry below for specifics. The "clean
+start" was about structure and intent, not a refusal to reuse anything
+genuinely useful.
 
 ## 3. Tooling split (as of initial setup)
 
@@ -51,6 +55,17 @@ the three-lens architecture (see README). This is expected to evolve as the
 actual sizing logic gets built — restructure freely as better shapes become
 obvious; this isn't meant to be locked in prematurely.
 
+Two additional folders, added 2026-10-03:
+- `docs/specs/` — build-ready specs (e.g. `BOND_SIZING_SPEC.md`) and firm
+  architectural decisions (e.g. `MASTER_PLANNING_DESIGN_PRINCIPLES.md`,
+  `RATIO_ANALYTICS_ARCHITECTURE.md`). A spec here is ready to build from.
+- `docs/ideas-inbox.md` — smaller ideas not yet build-ready. Promote an
+  entry to its own file under `docs/specs/` once it's firm enough; this is
+  the lighter-weight tier below a full spec.
+- `reference/` — external reference material that informs design but isn't
+  part of this product's own code (e.g. `kijabe-ui-precedent/`, a prior
+  React prototype being adapted from, not depended on).
+
 ## 5. Recap protocol
 
 At the end of each working session, write a recap file to `recaps/` capturing:
@@ -66,6 +81,28 @@ Naming: `recaps/YYYY-MM-DD-short-topic.md`
 
 _(Newest first.)_
 
+- **2026-10-03** — Reviewed `planning-engine-lab` more carefully and
+  migrated real material over (contradicts the 2026-09-30 "nothing of
+  value" assessment below — there was substantially more than first
+  thought). Moved in: `BOND_SIZING_SPEC.md` (full implementation-ready
+  spec, → `docs/specs/`), `financial_metrics.py` (working NPV/IRR/MIRR/
+  payback/operating-margin implementation, → `shared/`), the ratio-analytics
+  three-lens architecture + CARF-vs-generic DSCR distinction (→
+  `docs/specs/RATIO_ANALYTICS_ARCHITECTURE.md`), smaller captured ideas
+  (→ `docs/ideas-inbox.md`), and domain glossary (→ section 7 below).
+  Also brought in `reference/kijabe-ui-precedent/` — a React planning-UI
+  prototype Mario built pro bono for AIC Kijabe Hospital (Kenya); fully
+  his own work, no IP/confidentiality issue, kept in `reference/` (not
+  `master_planning/`) since it's a different domain's code being used as a
+  UI pattern precedent, not a dependency. In the course of reviewing it,
+  articulated a core design principle — **scarce-information-first**:
+  every input category needs a fast simple-mode path (single $ total, %
+  of revenue, hardcoded placeholder) alongside the full detailed buildup,
+  with the detailed structure existing in the data model from day one even
+  when simple mode is what's actually being used. Captured in
+  `docs/specs/MASTER_PLANNING_DESIGN_PRINCIPLES.md`, with Kijabe's existing
+  "Use Expense Override" checkbox as a working precedent for the pattern.
+
 - **2026-09-30** — Repo created (`MasterPlanner`, private, under TuanisCoder).
   Clean start — no carryover from `planning-engine-lab`. Package skeleton
   (`master_planning/`, `bond_sizing/`, `ratio_analytics/`, `shared/`)
@@ -78,4 +115,25 @@ _(Newest first.)_
 
 ## 7. Glossary / shorthand
 
-_(To be filled in as domain terms come up.)_
+- **CCRC / Life Plan Community** — Continuing Care Retirement Community
+- **IL / AL / MC / SNF** — Independent Living / Assisted Living / Memory
+  Care / Skilled Nursing Facility
+- **Entrance Fee (EF)** — Upfront payment by resident; Type A/B/C refund
+  structures
+- **ITB** — Intermediate Term Bond; secured by entrance fee receipts
+  during fill-up
+- **CAPI** — Capitalized Interest; bond interest funded from proceeds
+  during construction
+- **DSRF** — Debt Service Reserve Fund; IRS 3-part test sizing
+- **MTI** — Master Trust Indenture; governs all obligations including
+  bank tranches
+- **MADS** — Maximum Annual Debt Service
+- **DSCR** — Debt Service Coverage Ratio
+- **CARF** — Commission on Accreditation of Rehabilitation Facilities;
+  sets Life Plan Community financial ratio benchmarks (see
+  `docs/specs/RATIO_ANALYTICS_ARCHITECTURE.md` for the CARF-vs-generic
+  DSCR distinction — it's material, not cosmetic)
+- **Class 1 Sizing** — New money project financing
+- **Class 2 Sizing** — Wraparound / refunding against existing debt
+- **Philanthropy** — Real and variable (faith-based orgs: $0–$10M+);
+  reduces par amount
